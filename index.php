@@ -8,6 +8,7 @@
      * Google Maps API:
           http://code.google.com/apis/visualization/documentation/gallery/map.html
      * jQuery, hosted by Google API
+     * jQuery, hosted by Google APIfasdfasf
     -->
 
 
