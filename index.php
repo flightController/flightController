@@ -7,12 +7,16 @@
 </head>
 
 <body>
+<div class="content">
+    <ul>
 <?php
 
-
-    echo ("");
+foreach (){
+    echo ("Flugcode $ident");
 ?>
-
+        }
+        </ul>
+</div>
 
 </body>
 </html>
