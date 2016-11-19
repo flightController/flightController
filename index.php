@@ -100,7 +100,7 @@
 <body>
 
 <form onsubmit="return false;">
-    <p>Enter a flight ident to track:
+    <p>Bitte geben Sie die Flugnummer an:
         <input type="text" name="ident" id="ident_text" value="UAL423" />
         <input type="submit" id="go_button" value="Go" />
     </p>
