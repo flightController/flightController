@@ -10,11 +10,7 @@
 <body>
 <div class="content">
     <ul>
-<?php
 
-    echo("Flugcode $ident");
-
-?>
 
         </ul>
 </div>
