@@ -10,8 +10,6 @@
 <body>
 <div class="content">
     <ul>
-
-hallo pennis
         </ul>
 </div>
 
