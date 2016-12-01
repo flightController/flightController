@@ -5,6 +5,8 @@
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/flightController.iml
+.idea/modules.xml
+.idea/vcs.xml
 
 
 # Sensitive or high-churn files:
@@ -33,18 +35,3 @@
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-.idea/flightController1.iml
-controller/
-images/
-lib/
-model/
-view/
