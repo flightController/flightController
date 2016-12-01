@@ -43,3 +43,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/flightController1.iml
+controller/
+images/
+lib/
+model/
+view/
