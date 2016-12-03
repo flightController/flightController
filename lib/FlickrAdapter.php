@@ -5,6 +5,11 @@ class FlickrAdapter
     private $username;
     private $apiKey;
     private static $baseUrl = 'https://www.flickr.com/services/rest/?';
+    private $method = 'flickr.photos.search';
+    private $format = 'json';
+    private $tags;
+    private $content_type = '1';
+    private $pages = '1';
 
     /**
      * FlickrAdapter constructor.
@@ -17,7 +22,7 @@ class FlickrAdapter
         $this->apiKey = $apiKey;
     }
 
-    public function getPicture($city) {
+    public function getPicture($city, $number) {
 
     }
 }
