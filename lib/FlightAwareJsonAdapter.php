@@ -3,19 +3,20 @@
 class FlightAwareJsonAdapter
 {
     private $username;
-    private $apikey;
+    private $apiKey;
     private static $baseUrl = 'http://flightxml.flightaware.com/json/FlightXML2/';
 
     /**
      * FlightAwareJsonAdapter constructor.
      * @param $username
-     * @param $apikey
+     * @param $apiKey
      */
-    public function __construct($username, $api_key)
+    public function __construct($username, $apiKey)
     {
         $this->username = $username;
-        $this->apikey = $api_key;
+        $this->apiKey = $apiKey;
     }
+
 
     public function getFlightId($ident, $departure_time)
     {
@@ -58,20 +59,30 @@ class FlightAwareJsonAdapter
         $result->waypoints = $waypoints;
         return $result;
     }
-
-    public function updateAirportDatabase ()
+    public function getAllAirportName (): array
     {
-        $airportShortcuts = $this->get('AllAirports');
-        $airportInfo = array();
-        foreach ($airportShortcuts as $value) {
-            $airportInfo = array($this->get('AirportInfo', 'airportCode='.$value));
+        $dataArray = array('data' => '');
+        $airportShortcuts = $this->get('AllAirports', $dataArray)->AllAirportsResult->data;
+     $airportInfo = array();
+        $airportNames = array ();
+        foreach ($airportShortcuts as $airportShortcut) {
+            $params = array('airportCode' => $airportShortcut);
+            $airportNames[] = array($airportShortcut => $this->get('AirportInfo', $params)->AirportInfoResult->name);
+            echo 'params';
+            var_dump($params);
+            echo '<br>';
+            var_dump($airportNames);
+            echo '<br>';
+            break;
+
         }
-        return $airportInfo;
+
+        return $airportNames;
 
     }
 
 
-    protected function get($endpoint, $params)
+    private function get(string $endpoint, array $params)
     {
         $ch = curl_init(self::$baseUrl . $endpoint . '?' . http_build_query($params));
         curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->apiKey);
