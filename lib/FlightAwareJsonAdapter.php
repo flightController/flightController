@@ -59,31 +59,30 @@ class FlightAwareJsonAdapter
         $result->waypoints = $waypoints;
         return $result;
     }
-    public function updateAirportDatabase ()
+    public function getAllAirportName (): array
     {
         $dataArray = array('data' => '');
         $airportShortcuts = $this->get('AllAirports', $dataArray)->AllAirportsResult->data;
      $airportInfo = array();
-        $i = 0;
-        foreach ($airportShortcuts as $value) {
-            $params = array('airportCode' => $value);
-            $array = $this->get('AirportInfo', $params)->AirportInfoResult->name;
+        $airportNames = array ();
+        foreach ($airportShortcuts as $airportShortcut) {
+            $params = array('airportCode' => $airportShortcut);
+            $airportNames[] = array($airportShortcut => $this->get('AirportInfo', $params)->AirportInfoResult->name);
             echo 'params';
             var_dump($params);
             echo '<br>';
-            var_dump($array);
+            var_dump($airportNames);
             echo '<br>';
-            $airportInfo = $array;
             break;
 
         }
 
-        return $airportInfo;
+        return $airportNames;
 
     }
 
 
-    private function get($endpoint, $params)
+    private function get(string $endpoint, array $params)
     {
         $ch = curl_init(self::$baseUrl . $endpoint . '?' . http_build_query($params));
         curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->apiKey);
