@@ -1,6 +1,6 @@
 <?php
 
-class flightController extends controller
+class flight extends controller
 {
 
 }
