@@ -59,6 +59,17 @@ class FlightAwareJsonAdapter
         return $result;
     }
 
+    public function updateAirportDatabase ()
+    {
+        $airportShortcuts = $this->get('AllAirports');
+        $airportInfo = array();
+        foreach ($airportShortcuts as $value) {
+            $airportInfo = array($this->get('AirportInfo', 'airportCode='.$value));
+        }
+        return $airportInfo;
+
+    }
+
 
     protected function get($endpoint, $params)
     {
