@@ -2,7 +2,7 @@
 
 class App{
 
-    protected $controller = 'home';
+    protected $controller = 'homeController';
     protected $method = 'index';
     protected $params = [];
 
@@ -10,7 +10,7 @@ class App{
     {
         $url = $this->parseURL();
 
-        if(file_exists('../app/controller/' . $url[0] . 'Controller' . '.php')){
+        if(file_exists('../app/controller/' . $url[0] . 'Controller.php')){
             $this -> controller = $url[0] . 'Controller';
             unset($url[0]);
         }
