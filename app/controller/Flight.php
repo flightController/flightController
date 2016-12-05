@@ -1,6 +1,8 @@
 <?php
 
-class flight extends controller
+class Flight extends controller
 {
+    public function index(){
 
+    }
 }
