@@ -1,8 +1,13 @@
 <?php
 
-class Flight extends controller
+class FlightController extends controller
 {
-    public function index(){
+    public function index($identCode = ''){
 
+        if(empty($identCode)){
+            echo 'Flight List';
+        } else{
+            echo 'Flight Detail of Flight: ' . $identCode;
+        }
     }
 }
