@@ -5,9 +5,11 @@ class FlightController extends controller
     public function index($identCode = ''){
 
         if(empty($identCode)){
-            echo 'Flight List';
+            $this->view('flight/flightlistview');
         } else{
-            echo 'Flight Detail of Flight: ' . $identCode;
+            $flight = $this -> model('flight');
+            $flight -> code = $identCode;
+            $this->view('flight/flightdetailview', ['code' => $flight -> code]);
         }
     }
 }

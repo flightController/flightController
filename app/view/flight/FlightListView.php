@@ -1,6 +1,3 @@
 <?php
 
-class FlightView extends View
-{
-
-}
+echo 'FlightListView';
