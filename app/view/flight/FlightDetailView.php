@@ -1,6 +1,3 @@
 <?php
 
-class FlightDetailView extends View
-{
-
-}
+echo 'FlightDetailview of: ' . $data['code'];
