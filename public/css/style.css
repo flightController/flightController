@@ -2,3 +2,20 @@
     text-align: center;
     margin: 10% auto 10% auto;
 }
+
+.navbar-right {
+    padding-right: 30px;
+}
+
+.brand-centered {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.brand-centered .navbar-brand {
+    display: flex;
+    align-items: center;
+}

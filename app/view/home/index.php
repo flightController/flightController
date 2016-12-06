@@ -1,5 +1,5 @@
 <?php
-include_once '..\menu\menu.php';
+include '../app/view/menu/menu.php';
 ?>
 
 
