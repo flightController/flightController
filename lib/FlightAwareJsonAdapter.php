@@ -68,11 +68,6 @@ class FlightAwareJsonAdapter
         foreach ($airportShortcuts as $airportShortcut) {
             $params = array('airportCode' => $airportShortcut);
             $airportNames[] = array($airportShortcut => $this->get('AirportInfo', $params)->AirportInfoResult->name);
-            echo 'params';
-            var_dump($params);
-            echo '<br>';
-            var_dump($airportNames);
-            echo '<br>';
             break;
 
         }
