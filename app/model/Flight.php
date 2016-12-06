@@ -2,5 +2,10 @@
 
 class Flight
 {
-    public $code;
+    private $ident;
+    private $airline;
+    private $origin;
+    private $destination;
+    private $aircraft;
+
 }
