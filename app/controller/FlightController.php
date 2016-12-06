@@ -8,8 +8,7 @@ class FlightController extends controller
             $this->view('flight/flightlistview');
         } else{
             $flight = $this -> model('flight');
-            $flight -> code = $identCode;
-            $this->view('flight/flightdetailview', ['code' => $flight -> code]);
+            $this->view('flight/flightdetailview', ['code' => $identCode]);
         }
     }
 }
