@@ -10,7 +10,7 @@
                 </button>
             </div>
 
-            <div class="brand-centered">
+            <div class="brand-left">
                 <a class="navbar-brand" href="#"><img style="margin-right: 10px; padding: 0; width: 100px; height: 33px;" src="..\images\logo.png" alt="Sky Tracker">
                 </a>
             </div>

@@ -7,6 +7,16 @@
     padding-right: 30px;
 }
 
+.brand-left {
+    display: flex;
+    justify-content: left;
+    position: absolute;
+    width: 100%;
+    padding-left: 5px;
+    left: 0;
+    top: 0;
+}
+
 .brand-centered {
     display: flex;
     justify-content: center;
@@ -15,6 +25,7 @@
     left: 0;
     top: 0;
 }
+
 .brand-centered .navbar-brand {
     display: flex;
     align-items: center;
