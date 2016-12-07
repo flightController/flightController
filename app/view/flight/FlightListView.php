@@ -21,16 +21,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 descriptionbutton">
-
+                <div class="col-lg-3">L
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3">L
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3">L
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3">L
                 </div>
-        </div>
+            </div>
         <div class="col-lg-12 flightlist">
             <h1>New York</h1>
         </div>
