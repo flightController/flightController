@@ -9,9 +9,9 @@ class FlightController extends controller
         if(empty($identCode)){
 
         } else{
-            $adapter = new FlightAwareJsonAdapter('jenzer', '');
-            $adapter ->getFlight($identCode);
-            $this->view('flight/flightdetailview', ['code' => $identCode]);
+            $adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
+            $flight = $adapter ->getFlight($identCode);
+            $this->view('flight/flightdetailview', ['flight' => $flight]);
         }
     }
 }
