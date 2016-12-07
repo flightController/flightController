@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include_once '../app/config.php';
+include_once '../resources/keys.php';
 ?>
 <html>
 

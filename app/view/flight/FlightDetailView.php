@@ -1,3 +1,4 @@
 <?php
 
-echo 'FlightDetailview of: ' . $data['code'];
+echo 'FlightDetailview of: <br>';
+var_dump($data['flight']);
