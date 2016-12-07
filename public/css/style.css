@@ -1,8 +1,10 @@
+/* Firmenlogo zentriert bei Loginscreen */
 #logo {
     text-align: center;
     margin: 10% auto 10% auto;
 }
 
+/* Menu Abstand rechts im Container */
 .navbar-right {
     padding-right: 30px;
 }
@@ -26,13 +28,34 @@
     top: 0;
 }
 
+/* Firmenlogo */
 .brand-centered .navbar-brand {
     display: flex;
     align-items: center;
 }
 
+/* Dropdown Menu erscheint bei Hover */
 ul.nav li.dropdown:hover ul.dropdown-menu{
     display: block;
     margin-top:0px
+}
+
+/* Top Menu Höhe */
+.container-fluid{
+    height: 60px;
+}
+
+.flightlist {
+    height: 200px;
+    border: solid 0.5px gainsboro;
+    border-radius: 5px;
+    margin: 25px auto;
+}
+
+.flightlist h1 {
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
 }
 

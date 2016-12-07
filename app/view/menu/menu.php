@@ -2,17 +2,17 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar9">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMobile">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
             </div>
 
             <div class="brand-left">
-                <a class="navbar-brand" href="#"><img style="margin-right: 10px; padding: 0; width: 100px; height: 33px;" src="..\images\logo.png" alt="Sky Tracker">
-                </a>
+                <a class="navbar-brand" href="#"><img class="logo" style="margin-right: 10px; padding: 0; width: 100px; height: 33px;" src="..\images\logo.png" alt="Sky Tracker"></a>
             </div>
 
             <div id="navbar9" class="navbar-collapse collapse">
