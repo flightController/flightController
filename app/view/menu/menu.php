@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar9">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar9">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -17,15 +17,23 @@
 
             <div id="navbar9" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="http://www.w3schools.com">
-                            <b>Zürich </b><img border="0" alt="User" src="..\images\user.png" width="31" height="27">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            Eingelogt als <b>Zürich </b><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Abmelden</a></li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="http://www.w3schools.com">
-                            <img border="0" alt="User" src="..\images\setting.svg" width="31" height="27">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span><b class="caret"></b>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Ansicht</a></li>
+                            <li><a href="#">Benutzer</a></li>
+                            <li><a href="#">Standort</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
