@@ -110,7 +110,8 @@ class FlightAwareJsonAdapter
 
     }
 
-    public function getFlight(string $ident){
+    public function getFlight(string $ident) : Flight
+    {
         $flightInfo = $this->inFlightInfo($ident);
         if(empty($flightInfo)) {
             return;
