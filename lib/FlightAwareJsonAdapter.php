@@ -1,5 +1,6 @@
 <?php
 
+include_once ('/model/Flight.php');
 class FlightAwareJsonAdapter
 {
     private $username;
@@ -100,5 +101,9 @@ class FlightAwareJsonAdapter
         }
         return $result;
 
+    }
+
+    getFlight($ident){
+        $flight = new Flight();
     }
 }
