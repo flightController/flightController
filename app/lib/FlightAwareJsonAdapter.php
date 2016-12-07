@@ -1,4 +1,7 @@
 <?php
+include_once '../app/model/Flight.php';
+include_once '../app/model/GPSCoordinates.php';
+include_once '../app/model/Airport.php';
 
 class FlightAwareJsonAdapter
 {
@@ -43,7 +46,7 @@ class FlightAwareJsonAdapter
     {
         $result = $this->get('InFlightInfo', array('ident' => $ident))->InFlightInfoResult;
         if (!strlen($result->faFlightID)) {
-            throw new RuntimeException('No live or recent flight info was found', 404);
+            return;
         }
         $waypoints = array();
         $currentWaypoint = array();
@@ -76,6 +79,11 @@ class FlightAwareJsonAdapter
 
     }
 
+    public function getAirportInfo($airportCode){
+        $params = array('airportCode' => $airportCode);
+        return $this -> get('AirportInfo', $params)->AirportInfoResult;
+    }
+
 
     private function get(string $endpoint, array $params)
     {
@@ -99,6 +107,27 @@ class FlightAwareJsonAdapter
             throw new RuntimeException($result->error, 400);
         }
         return $result;
+
+    }
+
+    public function getFlight(string $ident){
+        $flightInfo = $this->inFlightInfo($ident);
+        if(empty($flightInfo)) {
+            return;
+        }
+
+        var_dump($flightInfo);
+        echo '<br>';
+        $gpsCoordinates = new GPSCoordinates($flightInfo -> latitude, $flightInfo -> longitude, $flightInfo ->altitude);
+        $destinationInfo = $this->getAirportInfo($flightInfo -> destination);
+        $destination = new Airport($flightInfo -> destination, $destinationInfo -> name, $destinationInfo -> location);
+        $originInfo = $this->getAirportInfo($flightInfo -> origin);
+        $origin = new Airport($flightInfo -> origin, $originInfo -> name, $originInfo -> location);
+
+        $flight = new Flight($ident,"", $origin, $destination, $flightInfo -> type, $gpsCoordinates);
+
+        var_dump($flight);
+
 
     }
 }
