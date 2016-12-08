@@ -59,3 +59,10 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
     font-weight: bold;
 }
 
+.flightweather {
+    margin-top: 20px;
+}
+
+.weather {
+    font-size: 1.5em;
+}
