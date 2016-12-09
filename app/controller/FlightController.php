@@ -8,8 +8,8 @@ class FlightController extends controller
 
         if(empty($identCode)){
             $adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
-            //$flights = $adapter -> getDepartedFlights('LSZH', 5);
-            $flights = [];
+            $flights = $adapter -> getDepartedFlights('LSZH', 5);
+            //$flights = [];
 
             $this->view('flight/flightlistview', ['flights' => $flights]);
 
