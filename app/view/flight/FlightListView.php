@@ -9,6 +9,7 @@
 <body>
 <?php
 $flights = $data['flights'];
+$cityDescriptions = $data['cityDescriptions'];
 foreach ($flights as $flight){
     echo <<<EOF
 <div class="container flightcontainer">
@@ -17,7 +18,7 @@ foreach ($flights as $flight){
             <h1>{$flight->getDestination()->getLocation()}</h1>
             <div class="row">
                 <div class="col-lg-9">
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+                    <p>{$cityDescriptions[$flight->getDestination()->getLocation()]}</p>
                     <div class="row flightweather">
                         <div class="col-lg-3"><button type="button" class="btn btn-primary btn-block"> Mehr Infos </button>
                         </div>
