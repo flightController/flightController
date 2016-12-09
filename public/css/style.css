@@ -66,3 +66,14 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 .weather {
     font-size: 1.5em;
 }
+
+.btn-primary {
+    background-image: linear-gradient(to bottom, #0067d3 0%,#0067d3 100%) !important;
+    border-color: #0067d3;
+}
+
+.btn-primary:hover {
+    background-color: black !important;
+    background-position: 0 +40px !important;
+    border-color: black;
+}
