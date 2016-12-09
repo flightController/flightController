@@ -1,6 +1,7 @@
 <?php
 
 include_once '../app/lib/FlightAwareJsonAdapter.php';
+include_once '../app/lib/WikipediaJsonAdapter.php';
 
 class FlightController extends controller
 {
@@ -11,12 +12,19 @@ class FlightController extends controller
             $flights = $adapter -> getDepartedFlights('LSZH', 5);
             //$flights = [];
 
-            $this->view('flight/flightlistview', ['flights' => $flights]);
+            $wikipediaAdapter = new WikipediaJsonAdapter();
+            $cityDescriptions = array();
+            foreach ($flights as $flight){
+                $cityDescriptions[$flight -> getDestination()-> getLocation()] = $wikipediaAdapter ->getShortCityDescription($flight -> getDestination()-> getLocation());
+            }
+
+            $this->view('flight/flightlistview', ['flights' => $flights,'cityDescriptions' => $cityDescriptions]);
 
         } else{
             $adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
-            //$flight = $adapter ->getFlight($identCode);
-            $flight = [];
+            $flight = $adapter ->getFlight($identCode);
+
+            //$flight = [];
             $this->view('flight/flightdetailview', ['flight' => $flight]);
         }
     }

@@ -9,81 +9,11 @@ class FlightAwareJsonAdapter
     private $apiKey;
     private static $baseUrl = 'http://flightxml.flightaware.com/json/FlightXML2/';
 
-    /**
-     * FlightAwareJsonAdapter constructor.
-     * @param $username
-     * @param $apiKey
-     */
     public function __construct($username, $apiKey)
     {
         $this->username = $username;
         $this->apiKey = $apiKey;
     }
-
-
-    public function getFlightId($ident, $departure_time)
-    {
-        if ($departure_time instanceof DateTime) {
-            $departure_time = $departure_time->getTimestamp();
-        } else if (!is_numeric($departure_time)) {
-            $departure_time = strtotime($departure_time);
-        }
-        return $this->get('GetFlightID', array('ident' => $ident, 'departureTime' => $departure_time))->GetFlightIDResult;
-    }
-
-    public function getHistoricalTrack($flight_id)
-    {
-        return $this->get('GetHistoricalTrack', array('faFlightID' => $flight_id))->GetHistoricalTrackResult->data;
-    }
-
-    public function getLastTrack($ident)
-    {
-        return $this->get('GetLastTrack', array('ident' => $ident))->GetLastTrackResult->data;
-    }
-
-
-    public function inFlightInfo($ident)
-    {
-        $result = $this->get('InFlightInfo', array('ident' => $ident))->InFlightInfoResult;
-        if (!strlen($result->faFlightID)) {
-            return null;
-        }
-        $waypoints = array();
-        $currentWaypoint = array();
-        foreach (explode(' ', $result->waypoints) as $coordinate) {
-            if (isset($currentWaypoint['latitude'])) {
-                $currentWaypoint['longitude'] = $coordinate;
-                $waypoints[] = $currentWaypoint;
-                $currentWaypoint = array();
-            } else {
-                $currentWaypoint['latitude'] = $coordinate;
-            }
-        }
-        $result->waypoints = $waypoints;
-        return $result;
-    }
-    public function getAllAirportName (): array
-    {
-        $dataArray = array('data' => '');
-        $airportShortcuts = $this->get('AllAirports', $dataArray)->AllAirportsResult->data;
-     $airportInfo = array();
-        $airportNames = array ();
-        foreach ($airportShortcuts as $airportShortcut) {
-            $params = array('airportCode' => $airportShortcut);
-            $airportNames[] = array($airportShortcut => $this->get('AirportInfo', $params)->AirportInfoResult->name);
-            break;
-
-        }
-
-        return $airportNames;
-
-    }
-
-    public function getAirportInfo($airportCode){
-        $params = array('airportCode' => $airportCode);
-        return $this -> get('AirportInfo', $params)->AirportInfoResult;
-    }
-
 
     private function get(string $endpoint, array $params)
     {
@@ -109,6 +39,48 @@ class FlightAwareJsonAdapter
         return $result;
     }
 
+
+    private function getInFlightInfo($ident)
+    {
+        $result = $this->get('InFlightInfo', array('ident' => $ident))->InFlightInfoResult;
+        if (!strlen($result->faFlightID)) {
+            return null;
+        }
+        $waypoints = array();
+        $currentWaypoint = array();
+        foreach (explode(' ', $result->waypoints) as $coordinate) {
+            if (isset($currentWaypoint['latitude'])) {
+                $currentWaypoint['longitude'] = $coordinate;
+                $waypoints[] = $currentWaypoint;
+                $currentWaypoint = array();
+            } else {
+                $currentWaypoint['latitude'] = $coordinate;
+            }
+        }
+        $result->waypoints = $waypoints;
+        return $result;
+    }
+
+    public function getAllAirportName (): array
+    {
+        $dataArray = array('data' => '');
+        $airportShortcuts = $this->get('AllAirports', $dataArray)->AllAirportsResult->data;
+     $airportInfo = array();
+        $airportNames = array ();
+        foreach ($airportShortcuts as $airportShortcut) {
+            $params = array('airportCode' => $airportShortcut);
+            $airportNames[] = array($airportShortcut => $this->get('AirportInfo', $params)->AirportInfoResult->name);
+            break;
+        }
+
+        return $airportNames;
+    }
+
+    public function getAirportInfo($airportCode){
+        $params = array('airportCode' => $airportCode);
+        return $this -> get('AirportInfo', $params)->AirportInfoResult;
+    }
+
     private function getDepartedInfo(string $airport, int $howMany, string $filter, int $offset)
     {
         $params = array('airport' => $airport,
@@ -122,7 +94,7 @@ class FlightAwareJsonAdapter
 
     public function getFlight(string $ident) : Flight
     {
-        $flightInfo = $this->inFlightInfo($ident);
+        $flightInfo = $this->getInFlightInfo($ident);
         if(empty($flightInfo)) {
             return null;
         }
