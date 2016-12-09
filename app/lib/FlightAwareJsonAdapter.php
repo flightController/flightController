@@ -46,7 +46,7 @@ class FlightAwareJsonAdapter
     {
         $result = $this->get('InFlightInfo', array('ident' => $ident))->InFlightInfoResult;
         if (!strlen($result->faFlightID)) {
-            return;
+            return null;
         }
         $waypoints = array();
         $currentWaypoint = array();
@@ -107,14 +107,24 @@ class FlightAwareJsonAdapter
             throw new RuntimeException($result->error, 400);
         }
         return $result;
-
     }
+
+    private function getDepartedInfo(string $airport, int $howMany, string $filter, int $offset)
+    {
+        $params = array('airport' => $airport,
+                        'howMany' => $howMany,
+                        'filter' => $filter,
+                        'offset' => $offset,
+        );
+        return $this -> get('Departed', $params);
+    }
+
 
     public function getFlight(string $ident) : Flight
     {
         $flightInfo = $this->inFlightInfo($ident);
         if(empty($flightInfo)) {
-            return;
+            return null;
         }
 
         $gpsCoordinates = new GPSCoordinates($flightInfo -> latitude, $flightInfo -> longitude, $flightInfo ->altitude);
@@ -125,5 +135,25 @@ class FlightAwareJsonAdapter
 
         $flight = new Flight($ident,"", $origin, $destination, $flightInfo -> type, $gpsCoordinates);
         return $flight;
+    }
+
+    public function getDepartedFlights(string $originAirportCode, $howMany) : array
+    {
+        $departedResult = $this->getDepartedInfo($originAirportCode, $howMany, 'airline', 0);
+        $flights = array();
+
+        $departedResult = $departedResult -> DepartedResult;
+        $departures = $departedResult -> departures;
+
+        foreach ($departures as $departedInfo){
+            $destinationInfo = $this->getAirportInfo($departedInfo -> destination);
+            $destination = new Airport($departedInfo -> destination, $destinationInfo -> name, $destinationInfo -> location);
+
+            $originInfo = $this->getAirportInfo($departedInfo -> origin);
+            $origin = new Airport($departedInfo -> origin, $originInfo -> name, $originInfo -> location);
+
+            $flights[] = new Flight($departedInfo -> ident,"", $origin, $destination, "", null);
+        }
+        return $flights;
     }
 }

@@ -19,5 +19,31 @@ class Airport
         $this->location = $location;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAirportCode()
+    {
+        return $this->airportCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+
+
 }
 

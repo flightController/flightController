@@ -18,7 +18,7 @@ class Flight
      * @param $aircraft
      * @param $gpsCoordinates
      */
-    public function __construct(string $ident, string $airline = "", Airport $origin, Airport $destination, string $aircraft, GPSCoordinates $gpsCoordinates)
+    public function __construct(string $ident, string $airline = "", Airport $origin, Airport $destination, string $aircraft = "", GPSCoordinates $gpsCoordinates = null)
     {
         $this->ident = $ident;
         $this->airline = $airline;
