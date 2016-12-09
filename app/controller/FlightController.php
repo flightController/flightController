@@ -1,6 +1,7 @@
 <?php
 
 include_once '../app/lib/FlightAwareJsonAdapter.php';
+include_once '../app/lib/WikipediaJsonAdapter.php';
 
 class FlightController extends controller
 {
@@ -15,8 +16,12 @@ class FlightController extends controller
 
         } else{
             $adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
-            //$flight = $adapter ->getFlight($identCode);
-            $flight = [];
+            $flight = $adapter ->getFlight($identCode);
+
+            //$wikiAdapter = new WikipediaJsonAdapter();
+            //echo $wikiAdapter ->getCityDescription('Bern');
+
+            //$flight = [];
             $this->view('flight/flightdetailview', ['flight' => $flight]);
         }
     }
