@@ -41,7 +41,7 @@ class FlickrJsonAdapter
            $photo_url = 'http://farm' . $farm_id . '.staticflickr.com/' . $server_id . '/' . $photo_id . '_' . $secret_id . $size . '.' . $format;;
 
 
-           $photo_url_array[] = array($photo_url);
+           $photo_url_array[] = $photo_url;
        }
         return $photo_url_array;
    }
