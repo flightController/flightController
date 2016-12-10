@@ -19,7 +19,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            Eingelogt als <b>Zürich </b><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            Eingeloggt als <b>Zürich </b><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Abmelden</a></li>
