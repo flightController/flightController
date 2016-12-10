@@ -25,7 +25,7 @@ class FlightController extends controller
             $cityDescription = $this->getWikiText($flight);
             $cityPictures = $this->getDetailViewCityPictures($flight);
 
-            $this->view('flight/flightdetailview', ['flight' => $flight, 'cityDescription' => $cityDescription, 'cityPicture' => $cityPictures]);
+            $this->view('flight/flightdetailview', ['flight' => $flight, 'cityDescription' => $cityDescription, 'cityPictures' => $cityPictures]);
         }
     }
 
@@ -71,7 +71,7 @@ class FlightController extends controller
         foreach ($flights as $flight) {
             $city = $flight->getDestination()->getLocation();
             $cityPicture = $flickJsonAdapter->getSmallPictures($city, 1);
-            $cityPicture[$city] = $cityPicture;
+            $cityPictures[$city] = $cityPicture[0];
         }
         return $cityPictures;
     }
