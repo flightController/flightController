@@ -2,8 +2,6 @@
 
 class WikipediaJsonAdapter
 {
-    private static $baseUrl = 'https://de.wikipedia.org/w/api.php?';
-
     private function get($what)
     {
         $url = 'http://de.wikipedia.org/w/api.php';
