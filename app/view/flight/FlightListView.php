@@ -22,7 +22,7 @@ foreach ($flights as $flight){
                     <div class="row flightweather">
                         <div class="hidelarge col-md-4 col-sm-0">
                             <img src="../images/berlinthumbnail.jpg"/>
-                        </div>
+                        </div> 
                         </div>
                         <div class="hidelarge col-md-4 col-sm-6 weather"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Sonnig
                         </div>
