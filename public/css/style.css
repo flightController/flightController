@@ -46,7 +46,6 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 }
 
 .flightlist {
-    height: 200px;
     border: solid 0.5px gainsboro;
     border-radius: 5px;
     margin: 25px auto;
@@ -76,4 +75,73 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
     background-color: black !important;
     background-position: 0 +40px !important;
     border-color: black;
+}
+
+.flightDetailText {
+
+}
+
+.flightdetail {
+    border: solid 0.5px gainsboro;
+    border-radius: 5px;
+    margin: 25px auto;
+}
+.flightdetailmap {
+    border: solid 0.5px gainsboro;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.flightdetailweather {
+    border: solid 0.5px gainsboro;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.navbar-default {
+    margin-right: -30px;
+}
+
+.flightdetail h2 {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.flightdetailmap img {
+    margin: 0 auto 20px auto;
+}
+
+.row-height{
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.inside {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.inside-full-height {
+    height: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+
+
+
+@media screen and (min-width: 960px) {
+    .hidelarge {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .hidemediumsmall {
+        display: none;
+    }
 }
