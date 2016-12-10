@@ -1,4 +1,4 @@
-# flightController
+# SkyTracker
 
 Configure php.ini:
 In the php.ini file you should add this lines if not exists:    
