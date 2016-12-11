@@ -28,22 +28,29 @@ class FlickrJsonAdapter
        $response = json_decode(file_get_contents($url));
        $photo_array = $response->photos->photo;
 
-       foreach ($photo_array as $single_photo) {
+       if ($photo_array != null) {
 
-           $farm_id = $single_photo->farm;
-           $server_id = $single_photo->server;
-           $photo_id = $single_photo->id;
-           $secret_id = $single_photo->secret;
+           foreach ($photo_array as $single_photo) {
 
-
-           $title = $single_photo->title;
-
-           $photo_url = 'http://farm' . $farm_id . '.staticflickr.com/' . $server_id . '/' . $photo_id . '_' . $secret_id . $size . '.' . $format;;
+               $farm_id = $single_photo->farm;
+               $server_id = $single_photo->server;
+               $photo_id = $single_photo->id;
+               $secret_id = $single_photo->secret;
 
 
-           $photo_url_array[] = $photo_url;
+               $title = $single_photo->title;
+
+               $photo_url = 'http://farm' . $farm_id . '.staticflickr.com/' . $server_id . '/' . $photo_id . '_' . $secret_id . $size . '.' . $format;;
+
+
+               $photo_url_array[] = $photo_url;
+           }
+           return $photo_url_array;
        }
-        return $photo_url_array;
+       else {
+           echo "Keine Bilder gefunden";
+       }
+
    }
     public function getSmallPictures(string $city, string $howmany) {
         return $this->getPictures($city, $howmany, '_m', 'jpg');
