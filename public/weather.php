@@ -19,7 +19,7 @@ $icon = ($weather->getIcon('Basel', 'CH'));
 <head>
     <title>SkyTracker</title>
     <meta name="description" content="SkyTracker Semesterarbeit 5. Semester der ABBTS in Baden">
- 
+
 </head>
 <body>
 
