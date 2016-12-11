@@ -32,16 +32,16 @@ class OpenWeatherJsonAdapter
         //Get current Temperature in Celsius
         $temperature = $data['main']['temp'];
         //Get weather condition
-        $weathercondition = $data['weather'][0]['main'];
+        //$weathercondition = $data['weather'][0]['main'];
         //Get cloud percentage
-        $cloud = $data['clouds']['all'];
+        //$cloud = $data['clouds']['all'];
         //Get wind speed
-        $wind = $data['wind']['speed'];
+        //$wind = $data['wind']['speed'];
 
         return $temperature;
-        return $weathercondition;
-        return $cloud;
-        return $wind;
+        //return $weathercondition;
+        //return $cloud;
+        //return $wind;
 
         // return $data;
     }
@@ -52,7 +52,7 @@ class OpenWeatherJsonAdapter
         $json = file_get_contents($url);
         $data = json_decode($json, true);
         //Get weather condition
-        $weathercondition = $data['weather'][0]['main'];
+        $weathercondition = $data['weather'][0]['description'];
         return $weathercondition;
     }
 
@@ -76,4 +76,13 @@ class OpenWeatherJsonAdapter
         return $wind;
     }
 
+    public function getIcon(string $city, string $country)
+    {
+        $url = ($this->baseUrl . $city . "," . $country . $this->extendUrl . $this->language . '&appid=' . $this->apiKey . '&mode=json');
+        $json = file_get_contents($url);
+        $data = json_decode($json, true);
+        //Get weather condition
+        $icon = $data['weather'][0]['icon'];
+        return $icon;
+    }
 }
