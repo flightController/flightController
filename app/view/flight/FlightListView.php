@@ -25,9 +25,9 @@ foreach ($flights as $flight){
                             <img src="{$cityPictures[$flight->getDestination()->getLocation()]}"/>
                         </div> 
                         </div>
-                        <div class="hidelarge col-md-4 col-sm-6 weather"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Sonnig
+                        <div class="hidelarge col-md-4 col-sm-5 weather"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Sonnig
                         </div>
-                        <div class="hidelarge col-md-4 col-sm-6 weather"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> 21°
+                        <div class="hidelarge col-md-4 col-sm-5 weather"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> 21°
                         </div>
                         <div class="col-lg-3 col-md-12 col-sm-12"><button type="button" class="btn btn-primary btn-block"> Mehr Infos </button>
                         </div>
