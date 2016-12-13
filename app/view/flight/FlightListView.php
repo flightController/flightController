@@ -11,7 +11,7 @@
 $flights = $data['flights'];
 $cityDescriptions = $data['cityDescriptions'];
 $cityPictures = $data['cityPictures'];
-foreach ($flights as $flight){
+foreach ($flights as $flight) {
     echo <<<EOF
 <div class="container flightcontainer">
     <div class="row">

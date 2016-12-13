@@ -11,9 +11,9 @@ class WikipediaJsonAdapter
 
         $options = array(
             CURLOPT_RETURNTRANSFER => true,   // return web page
-            CURLOPT_HEADER         => false,  // don't return headers
+            CURLOPT_HEADER => false,  // don't return headers
             CURLOPT_FOLLOWLOCATION => true,   // follow redirects
-            CURLOPT_USERAGENT      => $_SERVER['HTTP_USER_AGENT'], // name of client
+            CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'], // name of client
             CURLOPT_SSL_VERIFYPEER => false,
         );
         $ch = curl_init($url);
@@ -27,29 +27,29 @@ class WikipediaJsonAdapter
     }
 
 
-    public function getCityDescription($cityName) : string
+    public function getCityDescription($cityName): string
     {
         $wikiInformation = $this->get($cityName);
         $wikiInformation = json_decode($wikiInformation);
-        $pages = $wikiInformation -> query -> pages;
+        $pages = $wikiInformation->query->pages;
 
         $objectvars = get_object_vars($pages);
-        $text ="";
-        $i=0;
-        foreach($objectvars as $key => $value){
+        $text = "";
+        $i = 0;
+        foreach ($objectvars as $key => $value) {
             $i += 1;
-            if($i >= 3){
-                $page = $pages -> $key;
-                $text .= $page -> extract;
+            if ($i >= 3) {
+                $page = $pages->$key;
+                $text .= $page->extract;
             }
-            }
+        }
         return $text;
     }
 
-    public function getShortCityDescription($cityName) : string
+    public function getShortCityDescription($cityName): string
     {
         $text = "";
         $text = $this->getCityDescription($cityName);
-        return(substr($text,0,550).'...');
+        return (substr($text, 0, 550) . '...');
     }
 }
