@@ -47,7 +47,6 @@ foreach ($flights as $flight){
             </div>
         </div>
     </div>
-</div>
 EOF;
 }
 ?>
