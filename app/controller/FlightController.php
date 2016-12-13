@@ -10,18 +10,18 @@ class FlightController extends controller
     {
 
         if (empty($identCode)) {
-            //$adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
-            //$flights = $adapter -> getDepartedFlights('LSZH', 5);
-            $flights = $this->getTestFlights();
+            $adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
+            $flights = $adapter -> getDepartedFlights('LSZH', 5);
+            //$flights = $this->getTestFlights();
             $cityDescriptions = $this->getWikiTexts($flights);
             $cityPictures = $this->getListViewCityPictures($flights);
 
             $this->view('flight/flightlistview', ['flights' => $flights, 'cityDescriptions' => $cityDescriptions, 'cityPictures' => $cityPictures]);
 
         } else {
-            //$adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
-            //$flight = $adapter ->getFlight($identCode);
-            $flight = $this->getTestFlight();
+            $adapter = new FlightAwareJsonAdapter(FLIGHT_AWARE_NAME, FLIGHT_AWARE_KEY);
+            $flight = $adapter ->getFlight($identCode);
+            //$flight = $this->getTestFlight();
             $cityDescription = $this->getWikiText($flight);
             $cityPictures = $this->getDetailViewCityPictures($flight);
 
@@ -71,7 +71,7 @@ class FlightController extends controller
         foreach ($flights as $flight) {
             $city = $flight->getDestination()->getLocation();
             $cityPicture = $flickJsonAdapter->getSmallPictures($city, 1);
-            $cityPictures[$city] = $cityPicture[0];
+            $cityPictures[$city] = $cityPicture[0] ? $cityPicture[0] : "";
         }
         return $cityPictures;
     }

@@ -62,6 +62,10 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
     margin-top: 20px;
 }
 
+.flightcontainer img {
+    margin-bottom: 20px;
+}
+
 .weather {
     font-size: 1.5em;
 }
@@ -132,8 +136,12 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 
 .flightdetailflight {
     border: solid 0.5px gainsboro;
-    margin: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
     border-radius: 5px;
+    width: 95%;
 }
 
 .flightdetailflight h4{
