@@ -25,6 +25,7 @@ class FlightController extends controller
             $cityDescription = $this->getWikiText($flight);
             $cityPictures = $this->getDetailViewCityPictures($flight);
 
+
             $this->view('flight/flightdetailview', ['flight' => $flight, 'cityDescription' => $cityDescription, 'cityPictures' => $cityPictures]);
         }
     }
