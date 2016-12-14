@@ -17,6 +17,7 @@ class Airport
         $this->airportCode = $airportCode;
         $this->name = $name;
         $this->location = $location;
+
     }
 
     /**
